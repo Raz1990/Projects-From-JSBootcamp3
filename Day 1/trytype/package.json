@@ -1,0 +1,25 @@
+{
+  "name": "trytype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tryFunc.js",
+  "dependencies": {
+    "package.json": "^2.0.1",
+    "typescript": "^2.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "tsc -p tsconfig.json && node tryFunc.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raz1990/trytype.git"
+  },
+  "keywords": [],
+  "author": "Raz Harash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raz1990/trytype/issues"
+  },
+  "homepage": "https://github.com/Raz1990/trytype#readme"
+}
