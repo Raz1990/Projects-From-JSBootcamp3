@@ -253,6 +253,6 @@ function getUser(userName){
 
 //exports
 module.exports.showUserMenu = showUserMenu;
-module.exports.checkIfUserExists = checkIfUserExists; getUser
+module.exports.checkIfUserExists = checkIfUserExists;
 module.exports.getUser = getUser;
 
