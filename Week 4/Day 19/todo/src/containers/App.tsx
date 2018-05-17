@@ -3,41 +3,30 @@ import '../App.css';
 
 // import logo from './logo.svg';
 
-import Notes from './Notes';
-import NoteContentArea from "../components/NoteContentArea";
+import CoolButton from '.././components/ComponentCoolButton';
 
 interface IAppState {
     name: string
-    currentTextShown: string
 }
 
-const updateText = (event: any) => {
-    this.setState({
-        currentTextShown: event.target.innerText
-    });
-};
-
+function alertStuff(textToAlert:string) {
+    alert(textToAlert);
+}
 
 class App extends React.Component<{}, IAppState> {
     constructor(props: {}) {
         super(props);
 
         this.state = {
-            name: 'Raz',
-            currentTextShown: ''
+            name: 'raz'
         }
     }
 
     public render() {
         return (
             <div>
-                <div id="header">
-                    <span>Welcome, </span>{this.state.name}
-                </div>
-                <br />
-
-                <Notes updateTextCallback={updateText}/>
-                <NoteContentArea text={this.state.currentTextShown}/>
+                <CoolButton text={'My Cool Button'} printCallback={alertStuff}/>
+                <CoolButton text={'My UI Button'} printCallback={alertStuff}/>
             </div>
         );
     }
