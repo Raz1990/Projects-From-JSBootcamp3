@@ -1,0 +1,14 @@
+{
+  "name": "TimerOnLine",
+  "version": "0.0.1",
+  "dependencies": {},
+  "scripts": {
+    "start": "webpack",
+    "dev": "webpack –w",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "open-browser-webpack-plugin": "0.0.5",
+    "webpack-cli": "^2.1.4"
+  }
+}
