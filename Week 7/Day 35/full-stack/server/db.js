@@ -36,26 +36,22 @@ class DB {
 
     deleteUser(user) {
         return new Promise((resolve) => {
-            setTimeout(() => {
-                this.data.users.splice(user.id-1,1);
-                this.writeToJson();
-                resolve(user);
-            }, 500);
+            this.data.users.splice(user[0].id-1,1);
+            this.writeToJson();
+            resolve(user);
         });
     }
 
     updateUser(user) {
         return new Promise((resolve) => {
-            setTimeout(() => {
-                const id = user.id;
-                const name = user.username;
-                const age = user.age;
-                let foundUser = this.data.users.find( u => u.id === id );
-                foundUser.username = "Raz";
-                foundUser.age = 27;
-                this.writeToJson();
-                resolve(user);
-            }, 500);
+            const id = user[0][0].id;
+            const name = user[0][0].username;
+            const age = user[0][0].age;
+            let foundUser = this.data.users.find( u => u.id === id );
+            foundUser.username = user[1];
+            foundUser.age = 27;
+            this.writeToJson();
+            resolve(this.data.users);
         });
     }
 

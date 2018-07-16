@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Title</title>
+
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        .content {
+            background-color: lightgrey;
+            overflow: auto;
+        }
+
+        .block{
+            height: 5em;
+            width: 5em;
+            margin: 0.5em;
+            background-color: black;
+            display: inline-block;
+        }
+
+        .arrowLeft{
+            display: none;
+        }
+
+        @media screen and (max-width: 360px) {
+            .content{
+                white-space: nowrap;
+            }
+            .arrowLeft{
+                display: block;
+            }
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="content">
+        <div class="arrowLeft"> <=== </div>
+    </div>
+
+    <p>blah</p>
+    <script>
+
+        function fillContent() {
+            const contentArea = document.querySelector(".content");
+            let str = "";
+            for (let i = 1; i<=30; i++){
+                str += `<div class='block'></div>`;
+            }
+            contentArea.innerHTML += str;
+        }
+
+        fillContent();
+
+    </script>
+</body>
+</html>

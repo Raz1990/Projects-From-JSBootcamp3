@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+
+.box{
+  .hero{
+
+  }
+
+  .title{
+    @include with-theme("background-color",title);
+  }
+
+  .body{
+    @include with-theme("background-color",body-bg);
+  }
+}

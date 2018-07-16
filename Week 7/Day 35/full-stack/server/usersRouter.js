@@ -2,7 +2,6 @@ const express = require('express');
 const DB = require('./db');
 const usersRouter = express.Router();
 
-
 const db = new DB();
 
 // GET /users

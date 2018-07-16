@@ -1,0 +1,10 @@
+$box-title-bgcolor-dark: lighten(grey,20%);
+$box-body-bgcolor-dark: lighten($box-title-bgcolor-dark,10%);
+$box-body-textcolor-dark: white;
+
+$box-title-bgcolor-light: darken(white,20%);
+$box-body-bgcolor-light: darken($box-title-bgcolor-light,10%);
+$box-body-textcolor-light: black;
+
+$themes: (dark: (title: $box-title-bgcolor-dark, body-bg:$box-body-bgcolor-dark, body-fg:$box-body-textcolor-dark),
+          light: (title: $box-title-bgcolor-light, body-bg:$box-body-bgcolor-light, body-fg:$box-body-textcolor-light))

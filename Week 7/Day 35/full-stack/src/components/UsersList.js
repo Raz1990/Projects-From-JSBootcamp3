@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Button} from "./Button";
 
 export const UsersList = (props) => {
     UsersList.propTypes = {
@@ -11,8 +12,9 @@ export const UsersList = (props) => {
         }))
     };
 
-    this.getUserID = (li) => {
-        props.onUserClick(li.target.attributes.id.value);
+    this.getUserID = (button) => {
+        const buttonText = button.target.innerText;
+        props.onUserClick(button.target.parentElement.attributes.id.value,buttonText);
     };
 
     let count = 0;
@@ -20,7 +22,11 @@ export const UsersList = (props) => {
     return (<ul>
         {props.users.length &&
         (props.users.map(user => (
-            <li onClick={this.getUserID} id={count++} key={user.id}>{user.id}:{user.username} -- {user.age}</li>
+            <li id={count++} key={user.id}>
+                {user.id}:{user.username} -- {user.age}
+                <Button contentSTR={"Delete"} callbackFunc={this.getUserID}/>
+                <Button contentSTR={"Edit"} callbackFunc={this.getUserID}/>
+            </li>
         )))}
     </ul>);
 };

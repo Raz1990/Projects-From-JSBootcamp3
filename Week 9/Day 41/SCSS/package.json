@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "sass": "^1.6.1"
+  },
+  "scripts": {
+    "scss": "sass --watch main.scss main.css",
+    "reload": "reload –w –dir /."
+  }
+}

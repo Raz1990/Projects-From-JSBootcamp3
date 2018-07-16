@@ -1,0 +1,12 @@
+@mixin theme($theme, $property, $variable) {
+  .#{$theme} & { // map-get($themes, $theme) => $themes[$theme]
+    #{$property}: map-get(map-get($themes, $theme), $variable);
+    // => $themes[$theme[$property]]
+  }
+}
+
+@mixin with-theme($property, $variable){
+  @each $theme in map-keys($themes){ // => [dark, light]
+    @include theme($theme, $property, $variable);
+  }
+}

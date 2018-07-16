@@ -13,8 +13,8 @@ export class Api {
         return this.delete('/users', user);
     }
 
-    static updateUser(user) {
-        return this.update('/users', user);
+    static updateUser(user, newName) {
+        return this.update('/users', user, newName);
     }
 
     static delete(url, body){
@@ -44,7 +44,7 @@ export class Api {
             .then(res => res.json());
     }
 
-    static update(url, body) {
+    static update(url, ...body) {
         return fetch(this.baseUrl + url, {
             method: 'PUT',
             body: JSON.stringify(body),

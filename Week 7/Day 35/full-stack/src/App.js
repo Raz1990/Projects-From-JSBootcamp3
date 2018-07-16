@@ -5,6 +5,7 @@ import {Api} from './api';
 import {UsersList} from "./components/UsersList";
 import {Loader} from "./components/Loader";
 import {CreateUser} from "./components/CreateUser";
+import {EditingArea} from "./components/EditingArea";
 
 class App extends Component {
 
@@ -13,7 +14,8 @@ class App extends Component {
 
         this.state = {
             users: [],
-            isLoading: 0
+            isLoading: 0,
+            isEditing: false
         }
     }
 
@@ -53,14 +55,8 @@ class App extends Component {
             });
     };
 
-    onUserDeleteHandler = (id) => {
-
-        this.startLoading();
-
-        const currentUsers = this.state.users;
-        const theUser = currentUsers.splice(id,1);
-
-        Api.deleteUser(theUser)
+    userDelete = (user,currentUsers) => {
+        Api.deleteUser(user)
             .then((byeUser) => {
                 this.setState((prevState) => ({
                     users: currentUsers
@@ -69,20 +65,38 @@ class App extends Component {
             });
     };
 
-    onUserUpdateHandler = (id) => {
-
-        this.startLoading();
-
-        const currentUsers = this.state.users;
-        const foundUser = currentUsers.splice(id,1);
-
-        Api.updateUser(foundUser)
-            .then((byeUser) => {
+    userUpdate = (user, newName) => {
+        Api.updateUser(user, newName)
+            .then((newUsers) => {
                 this.setState((prevState) => ({
-                    users: currentUsers
+                    users: newUsers
                 }));
                 this.stopLoading();
             });
+    };
+
+    currentUsers; foundUser;
+
+    onUserButtonClick = (id, action, newName) => {
+        this.startLoading();
+
+        this.currentUsers = this.state.users.slice(0);
+        this.foundUser = this.currentUsers.splice(id,1);
+
+        if (action === "Delete") {
+            this.userDelete(this.foundUser,this.currentUsers);
+        }
+        else if (action === "Edit"){
+            this.setState((prevState) => ({
+                isEditing: true
+            }));
+        }
+        this.stopLoading();
+    };
+
+    onUpdate = (newName) => {
+        this.startLoading();
+        this.userUpdate(this.foundUser, newName);
     };
 
     render = () => {
@@ -95,8 +109,11 @@ class App extends Component {
                 {this.state.isLoading ? (<Loader/>) :
                     (<section className='app'>
                         <CreateUser onUserCreate={this.onUserCreateHandler}/>
-                        <UsersList users={this.state.users} onUserClick = {this.onUserUpdateHandler}/>
+                        <UsersList users={this.state.users} onUserClick = {this.onUserButtonClick}/>
                     </section>)}
+                {this.state.isEditing ?
+                    <EditingArea onUserClick = {this.onUpdate} /> :
+                    <div/>}
             </div>
         );
     }

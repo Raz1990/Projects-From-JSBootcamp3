@@ -1,0 +1,14 @@
+.dark .box .title {
+  background-color: #b3b3b3;
+}
+.light .box .title {
+  background-color: #cccccc;
+}
+.dark .box .body {
+  background-color: #cdcdcd;
+}
+.light .box .body {
+  background-color: #b3b3b3;
+}
+
+/*# sourceMappingURL=main.css.map */
